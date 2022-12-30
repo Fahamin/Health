@@ -1,0 +1,887 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.workout.healthmanager"
+    android:installLocation="internalOnly">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-configuration android:reqTouchScreen="stylus" />
+    <uses-configuration android:reqTouchScreen="finger" />
+
+    <uses-feature
+        android:name="android.hardware.vibrate"
+        android:required="false" /> <!-- work out -->
+    <permission
+        android:name="com.workout.healthmanager.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.crazytrends.healthmanager.permission.C2D_MESSAGE" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+    <application
+        android:name="com.workout.healthmanager.general.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/logo1"
+        android:killAfterRestore="true"
+        android:label="@string/app_name"
+        android:restoreAnyVersion="false"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name="com.workout.healthmanager.FragmentShowActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/admob_app_id" />
+
+        <activity
+            android:name="com.workout.healthmanager.general.Splash"
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.StatsActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/MainTheme" />
+        <activity
+            android:name="com.workout.healthmanager.InitUserInfoActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.workout.healthmanager.Water_MainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/MainTheme" />
+
+        <receiver android:name="com.workout.healthmanager.recievers.NotifierReceiver" />
+        <receiver
+            android:name="com.workout.healthmanager.recievers.BootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="com.workout.healthmanager.MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme1" />
+        <activity
+            android:name="com.workout.healthmanager.general.Home_page"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan"
+            tools:ignore="Instantiatable">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.bmi.BMI_Calculator"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.bmi.BMI_Chart"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.bmi.BMI_Result"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LLDialog">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.body_fat.Bodyfat_Calculator"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.body_fat.Bodyfat_Result"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LLDialog">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.body_fat.Body_Fat_Chart"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.calories_burn.Calories_burn_Calculator"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.calories_burn.Calories_Burn_Result"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LLDialog">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.calories_burn.Calories_Burn_Chart"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.child_growth.Child_Growth_Calculator"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.child_growth.Child_growth_result"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LLDialog">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.blood_donation.Blood_Donation_Calculator"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.blood_donation.Blood_Donation_Result"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LLDialog">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.calories_intake.Daily_Calories_Intake_Calculator"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.calories_intake.Daily_Calories_Intake_Result"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LLDialog">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.calories_intake.Daily_Calories_Intake_Chart"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.children_height_growth.Children_Height_Growth_Prediction_Calculator"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.children_height_growth.Children_Predicted_Height_Result"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LLDialog">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.pregnancy_due_date.Pregnancy_Due_Date_Calculator"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.ideal_body_weight.Ideal_Body_Weight_Calculator"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.ideal_body_weight.Ideal_Body_Weight_Result"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LLDialog">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.heart_rate.Heart_Rate_Calculator"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.heart_rate.Heart_Rate_Result"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LLDialog">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.heart_rate.Heart_Rate_Chart"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.blood_pressure.BloodPressure_Calculator"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.blood_pressure.Bloodpressure_Chart"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.blood_pressure.BloodPressure_Result"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LLDialog">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.alcohol.Alcohol_Chart"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.alcohol.Alcohol_Calculator"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.alcohol.Alcohol_Result"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LLDialog">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.trademill.Trademill_Calculator"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.trademill.Trademill_Result"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LLDialog">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.daily_water.Daily_WaterIntake_Calculator"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.daily_water.Daily_WaterIntake_Result"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LLDialog">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.smoking_cost.Smokincost_Calculator"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.smoking_cost.SmokingCost_Result"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LLDialog">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.sugar.Sugar_calculator"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.sugar.Sugar_Chart"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.sugar.Sugar_Result"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LLDialog">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.menstrual_and_ovulation.Menstrual_Ovulation_Calculator"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.smoking_risk.Smoking_Risk_Calculator"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.menstrual_and_ovulation.Menstrual_and_ovulation_Result"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LLDialog">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.smoking_risk.Smoking_Risk_Result"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LLDialog">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.BMR.bmr_calculator"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.BMR.BMR_Result"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LLDialog">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.blood_volume.Blood_Volume_Calculator"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.blood_volume.BloodVolume_Result"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LLDialog">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.body_adiposity_index.Body_Adiposity_Index_Calculator"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.body_adiposity_index.Body_Adiposity_Index_Result"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LLDialog">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.body_adiposity_index.Body_Adiposity_Index_Chart"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.body_frame_size.Body_Frame_Size_Calculator"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.body_frame_size.BodyFrame_Result"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LLDialog">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.Body_Surface_Area_Calculator.C1376Body_Surface_Area_Calculator"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.Body_Surface_Area_Calculator.BodySurfaceArea_Result"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LLDialog">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.chest_hip_ratio.Chest_Hip_Ratio_Calculator"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.chest_hip_ratio.Chest_Hip_Ratio_Result"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LLDialog">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.cholestrol.Cholestrol_Calculator"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.cholestrol.Cholestrol_Result"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LLDialog">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.lean_body_mass.Lean_Body_Mass_Calculator"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.lean_body_mass.Lean_Body_Mass_Result"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LLDialog">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.waist_height_ratio.Waist_Height_Ratio_Calculator"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.waist_height_ratio.Waist_Height_Ratio_Result"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LLDialog">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.waist_hip_ratio.Waist_Hip_Ratio_Calculator"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.waist_hip_ratio.Waist_Hip_Ratio_Result"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LLDialog">
+           
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.waist_hip_ratio.Waist_Hip_Ratio_Chart"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+           
+        </activity>
+
+        <receiver
+            android:name="com.workout.healthmanager.notification.NotificationBroadcastReciever"
+            android:exported="true" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="d7ea8cdd40371de71f77b4fb95e71d34fbdceba2" />
+
+        <service
+            android:name="com.google.firebase.components.ComponentDiscoveryService"
+            android:exported="false">
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+        </service>
+
+        <receiver
+            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+            android:enabled="true"
+            android:exported="false" />
+        <!--
+<receiver
+            android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.INSTALL_PACKAGES"
+            tools:ignore="MissingClass">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+        -->
+        <service
+            android:name="com.google.android.gms.measurement.AppMeasurementService"
+            android:enabled="true"
+            android:exported="false" />
+        <service
+            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+            android:enabled="true"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <receiver
+            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </receiver> <!-- <service -->
+        <!-- android:name="com.google.firebase.iid.FirebaseInstanceIdService" -->
+        <!-- android:exported="true"> -->
+        <!-- <intent-filter android:priority="-500"> -->
+        <!-- <action android:name="com.google.firebase.INSTANCE_ID_EVENT" /> -->
+        <!-- </intent-filter> -->
+        <!-- </service> -->
+        <service
+            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+            android:exported="true"
+            tools:replace="android:exported">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <provider
+            android:name="com.google.firebase.provider.FirebaseInitProvider"
+            android:authorities="com.workout.healthmanager.firebaseinitprovider"
+            android:exported="false"
+            android:initOrder="100" /> <!-- pill_reminder -->
+        <activity
+            android:name="com.workout.healthmanager.pill_reminder.Pill_MainActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme_pill1" />
+        <activity
+            android:name="com.workout.healthmanager.pill_reminder.ReminderAddActivity"
+            android:exported="true"
+            android:label="@string/title_activity_add_reminder"
+            android:theme="@style/AppTheme_pill2" />
+        <activity
+            android:name="com.workout.healthmanager.pill_reminder.ReminderEditActivity"
+            android:exported="true"
+            android:label="@string/title_activity_edit_reminder"
+            android:theme="@style/AppTheme_pill2" />
+
+        <receiver
+            android:name="com.workout.healthmanager.pill_reminder.AlarmReceiver"
+            android:exported="true" />
+        <receiver
+            android:name="com.workout.healthmanager.pill_reminder.BootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver> <!-- workout Plan -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@mipmap/ic_stat_name" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
+
+        <activity
+            android:name="com.workout.healthmanager.fragment.Workout"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:ignore="Instantiatable" />
+        <activity
+            android:name="com.workout.healthmanager.DayActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.workout.healthmanager.RestDayActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.workout.healthmanager.CompletionExcActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.workout.healthmanager.ExcDetailsActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.workout.healthmanager.MainExcerciseActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <receiver
+            android:name="com.workout.healthmanager.alarm.alarmmanagerdemo.NotificationPublisher"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.crazytrends.healthmanager.alarmmanagerdemo.NOTIFY_ACTION" />
+                <action android:name="android.intent.action.TIME_SET" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.workout.healthmanager.receiver.BootReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="android.intent.action.REBOOT" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.workout.healthmanager.receiver.DailyBrodcast"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="android.intent.action.REBOOT" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.workout.healthmanager.receiver.NotificationReceiver"
+            android:enabled="true"
+            android:exported="true" /> <!-- walk and step -->
+        <activity
+            android:name="com.workout.healthmanager.WalkandStep.activities.MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme_walk.NoActionBar_walk"
+            tools:ignore="Instantiatable" />
+        <activity
+            android:name="com.workout.healthmanager.WalkandStep.activities.TrainingActivity"
+            android:exported="true"
+            android:label="@string/activity_title_training"
+            android:parentActivityName="com.workout.healthmanager.WalkandStep.activities.TrainingOverviewActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.workout.healthmanager.WalkandStep.activities.TrainingOverviewActivity" />
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.WalkandStep.activities.TrainingOverviewActivity"
+            android:exported="true"
+            android:label="@string/activity_title_training"
+            android:parentActivityName="com.workout.healthmanager.WalkandStep.activities.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.workout.healthmanager.WalkandStep.activities.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.WalkandStep.activities.PreferencesActivity"
+            android:exported="true"
+            android:label="@string/action_settings"
+            android:parentActivityName="com.workout.healthmanager.WalkandStep.activities.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.workout.healthmanager.WalkandStep.activities.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.WalkandStep.activities.MotivationAlertTextsActivity"
+            android:exported="true"
+            android:label="@string/activity_title_motivation_alerts"
+            android:parentActivityName="com.workout.healthmanager.WalkandStep.activities.PreferencesActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.workout.healthmanager.WalkandStep.activities.PreferencesActivity" />
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.WalkandStep.activities.WalkingModesActivity"
+            android:configChanges="orientation|screenSize|keyboard"
+            android:exported="true"
+            android:label="@string/activity_title_walking_modes"
+            android:parentActivityName="com.workout.healthmanager.WalkandStep.activities.PreferencesActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.workout.healthmanager.WalkandStep.activities.PreferencesActivity" />
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.WalkandStep.activities.WalkingModeLearningActivity"
+            android:exported="true"
+            android:label="@string/activity_title_walking_modes"
+            android:parentActivityName="com.workout.healthmanager.WalkandStep.activities.WalkingModesActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.workout.healthmanager.WalkandStep.activities.WalkingModesActivity" />
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.WalkandStep.activities.DistanceMeasurementActivity"
+            android:exported="true"
+            android:label="@string/action_distance_measurement"
+            android:parentActivityName="com.workout.healthmanager.WalkandStep.activities.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.workout.healthmanager.WalkandStep.activities.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.workout.healthmanager.WalkandStep.activities.WidgetConfigureActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name="com.workout.healthmanager.WalkandStep.receivers.OnBootCompletedBroadcastReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.workout.healthmanager.WalkandStep.receivers.OnShutdownBroadcastReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_SHUTDOWN" />
+                <!-- this is for some htc devices (and others) -->
+                <action android:name="android.intent.action.QUICKBOOT_POWEROFF" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.workout.healthmanager.WalkandStep.receivers.OnPackageReplacedBroadcastReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.workout.healthmanager.WalkandStep.receivers.StepCountPersistenceReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.crazytrends.healthmanager.WALKING_MODE_CHANGED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.workout.healthmanager.WalkandStep.receivers.WidgetReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwidget_provider" />
+        </receiver>
+        <receiver
+            android:name="com.workout.healthmanager.WalkandStep.receivers.MotivationAlertReceiver"
+            android:exported="true" />
+        <receiver
+            android:name="com.workout.healthmanager.WalkandStep.receivers.HardwareStepCountReceiver"
+            android:exported="true" />
+
+        <service android:name="com.workout.healthmanager.WalkandStep.services.HardwareStepCounterService" />
+        <service android:name="com.workout.healthmanager.WalkandStep.services.MovementSpeedService" />
+        <service android:name="com.workout.healthmanager.WalkandStep.services.AccelerometerStepDetectorService" />
+        <service
+            android:name="com.workout.healthmanager.WalkandStep.services.HardwareStepDetectorService"
+            android:stopWithTask="false" />
+    </application>
+
+</manifest>
